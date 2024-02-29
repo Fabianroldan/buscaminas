@@ -1,15 +1,3 @@
-class Casella {
-    esMina: boolean;
-    revelada: boolean;
-    marcada: boolean;
-
-    constructor() {
-        this.esMina = false;
-        this.revelada = false;
-        this.marcada = false;
-    }
-}
-
 class Tauler {
     caselles: Casella[][];
     files: number;
@@ -29,3 +17,4 @@ class Joc {
         this.tauler = new Tauler(files, columnes);
     }
 }
+

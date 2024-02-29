@@ -6,6 +6,30 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script src="./dist/casella.js"></script>
+    <script src="dist/index.js"></script>
+    <script src="dist/joc.js"></script>
+    <script src="dist/tauler.js"></script>
 </body>
+
+<script>
+    let filas = 10;
+    let columnas = 10;
+    
+    let tauler = new Tauler(filas, columnas);
+    
+    let tablero = document.createElement('table');
+
+    for (let i = 0; i < filas; i++) {
+        let fila = document.createElement('tr');
+        for (let j = 0; j < columnas; j++) {
+            let casella = new Casella(i, j);
+            let celda = document.createElement('td');
+            celda.appendChild(casella.casella);
+            fila.appendChild(celda);
+        }
+        tablero.appendChild(fila);
+    }
+
+</script>
 </html>
