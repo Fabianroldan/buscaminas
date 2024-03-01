@@ -1,64 +1,55 @@
+"use strict";
 class Joc {
-    tauler: Tauler;
-
-    constructor(filas: number, columnas: number) {
+    constructor(filas, columnas) {
         this.tauler = new Tauler(filas, columnas);
         this.tauler.inicializarCaselles();
     }
-
-    dibuixarTauler(): void {
+    dibuixarTauler() {
         let tauler = '';
-
         for (let i = 0; i < this.tauler.filas; i++) {
             for (let j = 0; j < this.tauler.columnas; j++) {
                 const casella = this.tauler.caselles[i][j];
-
                 if (casella.revelada) {
                     if (casella.esMina) {
                         tauler += '💣';
-                    } else {
+                    }
+                    else {
                         tauler += '0';
                     }
-                } else {
+                }
+                else {
                     if (casella.marcada) {
                         tauler += '🚩';
-                    } else {
+                    }
+                    else {
                         tauler += '■';
                     }
                 }
             }
             tauler += '\n';
         }
-
         console.log(tauler);
     }
-
-    revelarCasella(fila: number, columna: number): void {
+    revelarCasella(fila, columna) {
         const casella = this.tauler.caselles[fila][columna];
-
         if (!casella.revelada && !casella.marcada) {
             casella.revelada = true;
-
             if (casella.esMina) {
                 alert('Joc acabat! Has perdut.');
-            } else {
+            }
+            else {
                 this.dibuixarTauler();
             }
         }
     }
-
-
-    marcarCasella(fila: number, columna: number): void {
+    marcarCasella(fila, columna) {
         const casella = this.tauler.caselles[fila][columna];
-
         if (!casella.revelada) {
             casella.marcada = !casella.marcada;
             this.dibuixarTauler();
         }
     }
 }
-    
-
 const joc = new Joc(8, 8);
 joc.dibuixarTauler();
 joc.revelarCasella(2, 3);
